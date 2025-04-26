@@ -1,0 +1,19 @@
+# Ignore user uploads
+/uploads/
+
+# Ignore user database (if using flat file like JSON for users)
+users.json
+
+# Ignore backup or temporary files
+*.log
+*.bak
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+
+# Ignore IDE/editor config files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
