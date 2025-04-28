@@ -82,34 +82,14 @@ if (!isset(\$_SESSION['user']) || \$_SESSION['user'] !== '$username') {
 <head>
     <meta charset="UTF-8">
     <title>Your Files</title>
-    <style>
-        body { font-family: sans-serif; margin: 2rem; }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 1rem;
-        }
-        .tile {
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 0.5rem;
-            text-align: center;
-            background: #f9f9f9;
-            box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
-        }
-        .tile img {
-            max-height: 100px;
-            max-width: 100%;
-            object-fit: contain;
-        }
-        .filename {
-            font-size: 0.85rem;
-            word-wrap: break-word;
-        }
-    </style>
+    <link rel="stylesheet" href="../../style.css">
 </head>
-<body>
-    <h1>Your Files</h1>
+<body class="body-container">
+    <div class="return-container">
+        <a href="../../index.php?upload" class="button return-button">⬅ Return to Upload</a>
+    </div>
+
+    <h1 class="main-title">Your Files</h1>
     <div class="grid">
         <?php foreach (\$files as \$file): 
             \$ext = strtolower(pathinfo(\$file, PATHINFO_EXTENSION));
@@ -120,10 +100,14 @@ if (!isset(\$_SESSION['user']) || \$_SESSION['user'] !== '$username') {
                     <?php if (\$isImage): ?>
                         <img src="<?= htmlspecialchars(\$file) ?>" alt="">
                     <?php else: ?>
-                        <div><?= strtoupper(\$ext) ?></div>
+                        <div class="icon"><?= strtoupper(\$ext) ?></div>
                     <?php endif; ?>
                 </div>
                 <div class="filename"><?= htmlspecialchars(\$file) ?></div>
+                <div class="actions">
+                    <a href="<?= htmlspecialchars(\$file) ?>" target="_blank" class="action-link">👁 View</a>
+                    <a href="<?= htmlspecialchars(\$file) ?>" download class="action-link">⬇ Download</a>
+                </div>
             </div>
         <?php endforeach; ?>
     </div>
@@ -137,102 +121,58 @@ PHP;
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Mini Drive - Auth</title>
-    <style>
-        body { font-family: sans-serif; max-width: 600px; margin: 2rem auto; }
-        h1, h2 { color: #333; }
-        form { margin: 1rem 0; }
-        .file-item { margin-bottom: 0.5rem; }
-        .message { color: green; }
-        .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.tile {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 0.5rem;
-    text-align: center;
-    background: #f9f9f9;
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
-}
-
-.tile .preview {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0.5rem;
-    overflow: hidden;
-}
-
-.tile img {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain;
-}
-
-.tile .icon {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #555;
-    background: #e0e0e0;
-    padding: 1rem;
-    border-radius: 6px;
-}
-
-.filename {
-    font-size: 0.85rem;
-    word-wrap: break-word;
-    margin-bottom: 0.3rem;
-}
-
-.actions a {
-    font-size: 0.8rem;
-    color: #007BFF;
-    text-decoration: none;
-}
-
-    </style>
+    <title>Upload Company</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="body-container">
 
-<h1>📁 Mini Drive</h1>
+<h1 class="main-title">Upload Company</h1>
 
 <?php if (isset($message)): ?>
     <p class="message"><?= htmlspecialchars($message) ?></p>
 <?php endif; ?>
 
 <?php if (!isset($_SESSION['user'])): ?>
-    <h2>Login</h2>
-    <form method="post">
-        <input name="username" placeholder="Username" required>
-        <input name="password" type="password" placeholder="Password" required>
-        <button type="submit" name="login">Login</button>
-    </form>
+    <?php if (isset($_GET['signup'])): ?>
+        <!-- Sign Up Form -->
+        <form method="post" class="form">
+            <h2 class="section-title">Sign Up</h2>
+            <input name="username" type="text" class="input" placeholder="Username" required>
+            <input name="password" type="password" class="input" placeholder="Password" required>
+            <button type="submit" name="signup" class="button">Sign Up</button>
+            <!-- Link back to Login -->
+            <p class="signup-prompt">Already a member? <a href="index.php" class="signup-link">Login here</a></p>
+        </form>
 
-    <h2>Sign Up</h2>
-    <form method="post">
-        <input name="username" placeholder="Username" required>
-        <input name="password" type="password" placeholder="Password" required>
-        <button type="submit" name="signup">Sign Up</button>
-    </form>
-<?php else: ?>
-    <p>Welcome, <strong><?= htmlspecialchars($_SESSION['user']) ?></strong>! <a href="?logout">Logout</a></p>
+    <?php else: ?>
+        <!-- Login Form -->
+        <form method="post" class="form">
+            <h2 class="section-title">Login</h2>
+            <input name="username" type="text" class="input" placeholder="Username" required>
+            <input name="password" type="password" class="input" placeholder="Password" required>
+            <button type="submit" name="login" class="button">Login</button>
+            <!-- Sign Up Link -->
+            <p class="signup-prompt">New user? <a href="?signup" class="signup-link">Sign up here</a></p>
+        </form>
+
+    <?php endif; ?>
+<?php elseif (isset($_SESSION['user'])): ?>
+    <!-- Welcome Message and Menu (Already Logged In) -->
+    <p class="welcome-message">
+        Welcome, <strong><?= htmlspecialchars($_SESSION['user']) ?></strong>!
+        <a href="?logout" class="logout-link">Logout</a>
+    </p>
 
     <div class="menu">
-        <a href="?upload">Upload Files</a>
-        <a href="uploads/<?= urlencode($_SESSION['user']) ?>/view_existing.php" target="_blank">View Existing Files</a>
+        <a href="?upload" class="menu-link">Upload Files</a>
+        <a href="uploads/<?= urlencode($_SESSION['user']) ?>/view_existing.php" class="menu-link">View Existing Files</a>
     </div>
 
     <?php if (isset($_GET['upload'])): ?>
-        <h2>Upload Files</h2>
-        <form method="post" enctype="multipart/form-data">
-            <input type="file" name="file" required>
-            <button type="submit" name="upload_file">Upload</button>
+        <form method="post" enctype="multipart/form-data" class="form">
+            <h2 class="section-title">Upload Files</h2>
+            <input type="file" name="file" class="input" required>
+            <button type="submit" name="upload_file" class="button">Upload</button>
         </form>
     <?php endif; ?>
 <?php endif; ?>

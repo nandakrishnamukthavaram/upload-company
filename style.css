@@ -1,0 +1,311 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    line-height: 1.6;
+    padding: 2rem;
+}
+
+/* WEBSITE HEADING (Mini Drive) */
+.main-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #007bff;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Headings */
+h1,
+h2 {
+    color: #222;
+    margin-bottom: 1rem;
+}
+
+/* General container */
+.body-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* FORM Styling */
+form {
+
+    background: #fff;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    width: 50%;
+    margin: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="file"] {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #f9f9f9;
+    transition: border-color 0.3s;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus,
+form input[type="file"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+form button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+.signup-prompt {
+    text-align: end;
+}
+
+/* Messages */
+.message {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+}
+
+/* Menu links (Upload / View files / Logout) */
+.menu {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-link,
+.button {
+    display: inline-block;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.menu-link:hover,
+.button:hover {
+    background-color: #218838;
+}
+
+/* LOGOUT link styled as a button */
+.logout-link {
+    background-color: #dc3545;
+}
+
+.logout-link:hover {
+    background-color: #c82333;
+}
+
+/* Flexbox for file tiles */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+
+}
+
+/* Individual tile */
+.tile {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s;
+    box-sizing: border-box;
+    /* Includes padding/border in the element's total width */
+}
+
+/* Hover effect */
+.tile:hover {
+    transform: translateY(-5px);
+}
+
+/* File preview area */
+.preview {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+}
+
+.tile img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.icon {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #555;
+    background: #e0e0e0;
+    padding: 1rem;
+    border-radius: 6px;
+}
+
+
+/* File name */
+.filename {
+    font-size: 0.85rem;
+    word-wrap: break-word;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+/* Actions (View / Download links) */
+.actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.action-link {
+    background-color: #17a2b8;
+    color: white;
+    text-decoration: none;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.action-link:hover {
+    background-color: #117a8b;
+}
+
+/* Return button container */
+.return-container {
+    margin-bottom: 1.5rem;
+}
+
+.return-button {
+    background-color: #6c757d;
+    color: white;
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.return-button:hover {
+    background-color: #5a6268;
+}
+
+/* Upload button */
+.upload-button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.7rem 1.2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.upload-button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+
+    form input[type="text"],
+    form input[type="password"],
+    form input[type="file"] {
+        font-size: 1rem;
+    }
+}
+
+.welcome-message {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #555;
+    background: #e9f7ef;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid #c3e6cb;
+    border-radius: 6px;
+    text-align: center;
+}
+
+/* Adjusted Logout Button inside .welcome-message */
+.welcome-message .logout-link {
+    margin-left: 10px;
+    display: inline-block;
+    background-color: #0000;
+    /* Red color for danger (Logout) */
+    color: #dc3545;
+    text-decoration: none;
+    border: 1px solid #dc3545;
+    padding: 2px 5px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 300ms ease;
+}
+
+.welcome-message .logout-link:hover {
+    font-weight: 400;
+    letter-spacing: 0.25px;
+    background-color: #c82333;
+
+    color: #fff;
+}
+
+.welcome-message .logout-link:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    /* Add focus effect for accessibility */
+}
